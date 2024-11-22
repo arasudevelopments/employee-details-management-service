@@ -19,7 +19,7 @@ public class DepartmentModel {
     private String departmentHead;
 
     public static Department convertEntity(DepartmentModel model){
-        SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Department department = new Department();
         department.setDepartmentId(model.getDepartmentId());
         department.setDepartmentName(model.getDepartmentName());
@@ -33,7 +33,7 @@ public class DepartmentModel {
     }
 
     public static DepartmentModel convertModel(Department entity){
-        SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         DepartmentModel department = new DepartmentModel();
         department.setDepartmentId(entity.getDepartmentId());
         department.setDepartmentName(entity.getDepartmentName());
