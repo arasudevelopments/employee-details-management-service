@@ -5,6 +5,7 @@ import com.employee.details.management.service.entity.Employee;
 import com.employee.details.management.service.model.EmployeeModel;
 import com.employee.details.management.service.service.DepartmentService;
 import com.employee.details.management.service.service.EmployeeService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeService service;
 
+    @RolesAllowed("ROLE_ADMIN")
     @GetMapping("/allEmployees")
     public List<EmployeeModel> getAllEmployees(){
         return  service.getAllEmployees();

@@ -1,6 +1,11 @@
 spring:
   application:
     name: employee-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri:  "http://localhost:8080/realms/employee-details-management"
   jpa:
     database: mysql
     show-sql: true
@@ -13,3 +18,6 @@ spring:
       driverClassName: com.mysql.jdbc.Driver
 server:
   port: 8085
+
+application:
+  client: employee-details-management-service
