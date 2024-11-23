@@ -32,4 +32,5 @@ public class Employee {
 
     @Column
     private int departmentId;
+
 }

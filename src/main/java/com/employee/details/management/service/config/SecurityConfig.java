@@ -59,10 +59,4 @@ public class SecurityConfig{
         return new CustomJwtGrantedAuthoritiesConverter(clientName);
     }
 
-    @Bean
-    protected CorsConfigurationSource corsConfigurationSource() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
-        return source;
-    }
 }

@@ -1,9 +1,7 @@
 package com.employee.details.management.service.controller;
 
-import com.employee.details.management.service.entity.Department;
-import com.employee.details.management.service.entity.Employee;
+import com.employee.details.management.service.model.DepartmentModel;
 import com.employee.details.management.service.model.EmployeeModel;
-import com.employee.details.management.service.service.DepartmentService;
 import com.employee.details.management.service.service.EmployeeService;
 import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +11,13 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("api/employee")
+@RequestMapping("/api/employee")
 @CrossOrigin(origins = "http://localhost:4200")
 public class EmployeeController {
 
     @Autowired
     private EmployeeService service;
 
-    @RolesAllowed("ROLE_ADMIN")
     @GetMapping("/allEmployees")
     public List<EmployeeModel> getAllEmployees(){
         return  service.getAllEmployees();
@@ -36,18 +33,23 @@ public class EmployeeController {
         return  service.getEmployeeByDepartment(departmentId);
     }
 
+    @GetMapping("/searchEmployee")
+    public List<EmployeeModel> getSearchEmployee(@RequestParam String search){
+        return service.getSearchEmployee(search);
+    }
+
     @PostMapping("/addEmployee")
-    public EmployeeModel addEmployee(@RequestBody EmployeeModel employee){
+    public EmployeeModel addEmployeeDetail(@RequestBody EmployeeModel employee){
         return service.updateEmployee(employee);
     }
 
-    @PutMapping("/updateEmployee")
-    public EmployeeModel updateEmployee (@RequestBody EmployeeModel employee){
+    @PutMapping("/alterEmployee")
+    public EmployeeModel updateEmployeeDetail(@RequestBody EmployeeModel employee){
         return service.updateEmployee(employee);
     }
 
     @DeleteMapping("/deleteEmployee")
-    public boolean deleteEmployee(@RequestParam int empId){
+    public boolean deleteEmployeeDetail(@RequestParam int empId){
         service.deleteEmployee(empId);
         return true;
     }

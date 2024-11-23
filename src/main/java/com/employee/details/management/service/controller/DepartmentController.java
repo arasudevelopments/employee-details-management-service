@@ -19,10 +19,14 @@ public class DepartmentController {
     @Autowired
     private DepartmentService service;
 
-    @RolesAllowed("ROLE_ADMIN")
     @GetMapping("/allDepartments")
     public List<DepartmentModel> getAllDepartments(){
         return  service.getAllDepartments();
+    }
+
+    @GetMapping("/search")
+    public List<DepartmentModel> getSearchDepartments(@RequestParam String search){
+        return service.getSearchDepartments(search);
     }
 
     @GetMapping("/")
@@ -35,12 +39,12 @@ public class DepartmentController {
         return service.addDepartment(department);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/alterDepartment")
     public DepartmentModel updateDepartment (@RequestBody DepartmentModel department){
         return service.addDepartment(department);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/removeDepartment")
     public boolean deleteDepartment(@RequestParam int id){
         service.deleteDepartment(id);
         return true;

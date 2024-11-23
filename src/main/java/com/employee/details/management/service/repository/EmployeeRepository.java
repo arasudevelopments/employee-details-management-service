@@ -17,4 +17,7 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
     Employee findByEmployeeId(int employeeId);
 
     List<Employee> findByDepartmentId(int departmentId);
+
+    @Query(value="select employeeId,name,email,age,dataOfJoining,departmentId from Employee where name like :search")
+    List<Object> getSearchEmployee(@Param("search") String search);
 }
