@@ -21,3 +21,13 @@ server:
 
 application:
   client: employee-details-management-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics
+  metrics:
+    export:
+      atlas:
+        enabled: false
