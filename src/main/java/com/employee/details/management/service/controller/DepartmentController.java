@@ -14,7 +14,6 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class DepartmentController {
 
-    // sp - change
     Logger logger = LogManager.getLogger(DepartmentController.class);
 
     @Autowired
